@@ -180,27 +180,49 @@ end
 
 def team_colors (team_name_parameter)
   
-  team_colors_array = []
+
 
   game_hash.each do |side, data|
-    data.each do |attribute, value|
-      attribute.each do |value, color_selection|
-         
-        if value == :color
-          team_colors_array << color_selection
-         
-        end #end if attribute
+    binding.pry
+    
+    if data[:team_name] == team_name_parameter
+        binding.pry
+        return data[:colors]
         
-      end #attribute.each
-    end #end data each
+    end
+    
   end #end game hash
-  
-  team_colors_array
- end #end team colors method
+
+end #end team colors method
+ 
 
 team_colors ("Charlotte Hornets")
 
 
+
+
+
+
+def team_names
+  
+  team_names_array = []
+
+  game_hash.each do |side, data|
+    data.each do |attribute, value|
+
+        if attribute == :team_name
+          team_names_array << value
+        end #end if attribute
+
+  
+    end #end data each
+  end #end game hash
+  
+  team_names_array
+ 
+
+
+end #end team colors method
 
 
 
