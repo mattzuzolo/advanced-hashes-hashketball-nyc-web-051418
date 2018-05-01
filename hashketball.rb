@@ -262,42 +262,6 @@ end #end big method
 
 
 
-
-
-
-def big_shoe_rebounds
-  
-    biggest_shoes_rebound_count = 0
-    player_with_the_biggest_shoes = who_has_biggest_shoes
-    binding.pry
-  
-    game_hash.each do |side, data|
-      data.each do |players, stats|
-        stats.each do |player_name, stat_list|
-          
-
-              if player_name == who_has_biggest_shoes
-                
-                stat_list.each do |specific_stat, specific_stat_value|
-                  
-                  if specific_stat == :rebounds
-                      biggest_shoes_rebound_count = specific_stat_value
-                  end #end if
-                  
-                end #end stat_list each
-              end  #end if player_name
-    
-        end  #end stats each
-      end #end data
-    end  #end game hash
-    biggest_shoes_rebound_count
-end #end method
-
-
-#big_shoe_rebounds
-
-
-
 def who_has_biggest_shoes
 
   player_with_biggest_shoes = nil
@@ -330,13 +294,49 @@ def who_has_biggest_shoes
   end #end game hash 
   
   player_with_biggest_shoes
-  binding.pry
 end #end who has biggest shoes method
 
 
 
 
+def big_shoe_rebounds 
+  
+    biggest_shoes_rebound_count = 0
+    player_with_the_biggest_shoes = who_has_biggest_shoes
+  
+    game_hash.each do |side, data|
+      
+      
+      data[:players].each do |players, stats|
+        
+        # players.each do |player_name, stat_list|
+          #binding.pry
+         #if players == :players
+           
+              if players == who_has_biggest_shoes
+                #binding.pry
+                stats.each do |specific_stat, specific_stat_value|
+                  
+                  if specific_stat == :rebounds
+                      biggest_shoes_rebound_count = specific_stat_value
+                      #binding.pry
+                      
+                  end #end if
+                  
+                end #end stat_list each
+            #  end  #end if player_name
+        
+        end  #end stats each
+      end #end data
+    end  #end game hash
+    biggest_shoes_rebound_count
+    
+end #end method
 
-who_has_biggest_shoes
+
+big_shoe_rebounds
+
+
+
 
 
