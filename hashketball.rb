@@ -105,6 +105,7 @@ def game_hash
         "Brendan Haywood" => {
           number: 33,
           shoe: 15,
+          
           points: 6,
           rebounds: 12,
           assists: 12,
@@ -178,30 +179,6 @@ def shoe_size (name)
 end
 
 
-def team_colors (team_name_parameter)
-  
-
-
-  game_hash.each do |side, data|
-    binding.pry
-    
-    if data[:team_name] == team_name_parameter
-        binding.pry
-        return data[:colors]
-        
-    end
-    
-  end #end game hash
-
-end #end team colors method
- 
-
-team_colors ("Charlotte Hornets")
-
-
-
-
-
 
 def team_names
   
@@ -219,10 +196,146 @@ def team_names
   end #end game hash
   
   team_names_array
+end #end team colors method
+
+
+def team_colors (team_name_parameter)
+  game_hash.each do |side, data|
+
+    if data[:team_name] == team_name_parameter
+        return data[:colors]
+    end
+  end #end game hash
+end #end team colors method
  
 
 
-end #end team colors method
+def player_numbers (team_name_parameter)
+  
+  player_numbers_array = []
+  
+  game_hash.each do |side, data|
+    
+      if data[:team_name] == team_name_parameter
+
+    data.each do |players, stats|
+      if players == :players
+          
+          stats.each do |player_number, stat_list|
+          
+              stat_list.each do |specific_stat, specific_stat_value|
+                
+                if specific_stat == :number
+                    # binding.pry
+                    player_numbers_array << specific_stat_value
+                end
+            end  
+        end 
+      end #end if  
+    end #end data.each
+  end
+  end #end game_hash each 
+  player_numbers_array
+end #end player_numbers method
+
+player_numbers ("Charlotte Hornets")
+
+def player_stats (name_parameter)
+  
+  game_hash.each do |side, data|
+    
+    data.each do |players, stats|
+      
+        
+      
+      if players == :players
+          
+        stats.each do |name,individual_stats|
+            if name == name_parameter
+              return individual_stats
+            end  
+        end
+          
+      end #end if  
+    end #end data.each
+  end #end game hash
+end #end big method
+
+
+
+
+
+
+def big_shoe_rebounds #(who_has_biggest_shoes)
+
+  player_with_the_biggest_shoes = who_has_biggest_shoes
+  
+  biggest_shoes_rebound_count = 0
+  
+  game_hash.each do |side, data|
+    data.each do |players, stats|
+      
+      stats.each do |player_name, stat_list|
+            
+            if player_name == player_with_the_biggest_shoes
+              stat_list.each do |specific_stat, specific_stat_value|
+                if specific_stat == :rebounds
+                    biggest_shoes_rebound_count = specific_stat_value
+                end #end if
+              end #end stat_list each
+            end  #end if
+  
+        end  #end stats each
+
+    end #end data
+  end  #end game hash
+  
+  biggest_shoes_rebound_count
+  binding.pry  
+
+end #end method
+
+big_shoe_rebounds
+
+
+
+def who_has_biggest_shoes
+
+  player_with_biggest_shoes = nil
+  biggest_shoe_size = 0
+  
+  game_hash.each do |side, data|
+    data.each do |players, stats|
+      if players == :players
+        
+        stats.each do |name, individual_stats|
+          
+          individual_stats.each do |shoe_key, shoe_value|
+            
+            if shoe_key == :shoe
+              if shoe_value > biggest_shoe_size
+                  biggest_shoe_size = shoe_value
+                  player_with_biggest_shoes = name
+                 
+              end    
+            end
+            
+          end  
+            
+  
+  
+        end #end individual_stats 
+  
+      end #end if 
+    end #end data each
+  end #end game hash 
+  
+  player_with_biggest_shoes
+end #end who has biggest shoes method
+
+
+
+who_has_biggest_shoes
 
 
 
