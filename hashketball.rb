@@ -105,7 +105,6 @@ def game_hash
         "Brendan Haywood" => {
           number: 33,
           shoe: 15,
-          
           points: 6,
           rebounds: 12,
           assists: 12,
@@ -266,34 +265,34 @@ end #end big method
 
 
 
-def big_shoe_rebounds #(who_has_biggest_shoes)
+def big_shoe_rebounds
+  
+    biggest_shoes_rebound_count = 0
+    player_with_the_biggest_shoes = who_has_biggest_shoes
+    binding.pry
+  
+    game_hash.each do |side, data|
+      data.each do |players, stats|
+        stats.each do |player_name, stat_list|
+          
 
-  player_with_the_biggest_shoes = who_has_biggest_shoes
-  
-  biggest_shoes_rebound_count = 0
-  
-  game_hash.each do |side, data|
-    data.each do |players, stats|
-      
-      stats.each do |player_name, stat_list|
-            
-            if player_name == player_with_the_biggest_shoes
-              stat_list.each do |specific_stat, specific_stat_value|
-                if specific_stat == :rebounds
-                    biggest_shoes_rebound_count = specific_stat_value
-                end #end if
-              end #end stat_list each
-            end  #end if
-  
+              if player_name == who_has_biggest_shoes
+                
+                stat_list.each do |specific_stat, specific_stat_value|
+                  
+                  if specific_stat == :rebounds
+                      biggest_shoes_rebound_count = specific_stat_value
+                  end #end if
+                  
+                end #end stat_list each
+              end  #end if player_name
+    
         end  #end stats each
-
-    end #end data
-  end  #end game hash
-  
-  biggest_shoes_rebound_count
-  binding.pry  
-
+      end #end data
+    end  #end game hash
+    biggest_shoes_rebound_count
 end #end method
+
 
 big_shoe_rebounds
 
@@ -332,11 +331,6 @@ def who_has_biggest_shoes
   
   player_with_biggest_shoes
 end #end who has biggest shoes method
-
-
-
-who_has_biggest_shoes
-
 
 
 
