@@ -294,7 +294,7 @@ def big_shoe_rebounds
 end #end method
 
 
-big_shoe_rebounds
+#big_shoe_rebounds
 
 
 
@@ -330,12 +330,13 @@ def who_has_biggest_shoes
   end #end game hash 
   
   player_with_biggest_shoes
+  binding.pry
 end #end who has biggest shoes method
 
 
 
 
 
-
+who_has_biggest_shoes
 
 
