@@ -309,15 +309,13 @@ def big_shoe_rebounds
         if players == who_has_biggest_shoes
              
             stats.each do |specific_stat, specific_stat_value|
-                  
                 if specific_stat == :rebounds
                     biggest_shoes_rebound_count = specific_stat_value
                 end #end if
-                  
              end #end stat_list each
            
-        end  #end stats each
-      end #end data
+        end  #end if players has biggest shoes
+      end #end data each
     end  #end game hash
     biggest_shoes_rebound_count
 end #end method
