@@ -320,10 +320,3 @@ def big_shoe_rebounds
     biggest_shoes_rebound_count
 end #end method
 
-
-big_shoe_rebounds
-
-
-
-
-
